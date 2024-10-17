@@ -1,11 +1,97 @@
 # TUGAS 2 PRAKTIKUM WEB 2
 # ERD TABEL MAHASISWA DAN NILAI
 ## 1). Membuat View berbasis OOP, dengan mengambil data dari database MySQL
-membuat database db_mahasiswa dan membuat tabel mahasiswa dengan struktur :
+
+- membuat database db_mahasiswa dan membuat tabel mahasiswa dengan struktur :
 ![tabel mhs](https://github.com/user-attachments/assets/8afa624c-9c8c-4c79-91ca-0a00b27d64ec)
 
 dan tabel nilai dengan struktur :
-![tabel nilai](https://github.com/user-attachments/assets/87de0c7e-178c-4009-87ec-ef8173dd611f)
+![andin](https://github.com/user-attachments/assets/efd58f1f-00e6-44c6-b397-85275b2799d5)
+
+- membuat view dengan Bootstrap
+```php
+<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWEB 2</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar 1 (Utama) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarMain">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="tampil_mahasiswa.php">Admin<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="tampil_lulus2.php">Mahasiswa</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <h1>Selamat Datang di Halaman Penilaian Mahasiswa</h1>
+        <h2>Halo!</h2>
+        <p>Apa yang Harus Anda Lakukan?<br>
+        Jika Anda seorang admin, silakan klik Menu Admin, dan jika Anda seorang mahasiswa, silakan klik Mahasiswa.</p>
+        
+    </div>
+
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+?>
+```
+
+- berikut adalah kode lengkap untuk koneksi pada database
+```php
+<?php
+
+class Database {
+    private $host = "localhost";
+    private $username = "root";
+    private $password = "";
+    private $db = "db_mahasiswa";
+    private $conn; 
+
+    public function __construct() {
+        $this->getConnection();
+    }
+
+    public function getConnection() {
+        $this->conn = null;
+        try {
+            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db, $this->username, $this->password);
+            $this->conn->exec("set names utf8");
+            // echo "Koneksi berhasil!<br>";
+        } catch (PDOException $exception) {
+            echo "Koneksi error: " . $exception->getMessage();
+        }
+        return $this->conn;
+    }
+
+    public function getConn() {
+        return $this->conn; // Tambahkan method untuk mengembalikan koneksi
+    }
+
+    public function tampilkanData() {
+        
+    }
+}
+?>
+```
+
 ## 2). Gunakan the_construct sebagai link ke database 
 cnstrator pada class mahasiswa untuk menghubungkan dengan class database
 ```php
@@ -47,7 +133,7 @@ class Database {
 ```
 
 ## 4). Membuat kelas turunan menggunakan konsep pewarisan 
-membuat class turunan dari nilai yaitu lulus dan remedi berdasarkan nilai akhir
+membuat class turunan dari nilai yaitu lulus dan remedi berdasarkan nilai akhir. berikut kode lengkap turunan Lulus:
 ```
 <?php
 class Lulus extends Nilai{
@@ -66,6 +152,7 @@ $lulus = new Lulus();
 $data = $lulus ->tampilkanData();
 ?>
 ```
+membuat class turunan dari nilai yaitu lulus dan remedi berdasarkan nilai akhir. berikut kode lengkapnya turunan Remidi:
 ```php
 <?php
 class Remidi extends Nilai{
@@ -87,6 +174,8 @@ $data = $remidi ->tampilkanData();
 ## e). Terapkan polimorfisme untuk minimal 2 peran sesuai studi kasus
 
 2 peran yaitu menjadi admin dan mahasiswa, admin bisa mengakses semua tabel, sedangkan mahasiswa hanya bisa melihat tabel remedi dan lulus. isi dalam index:
+1. Role Admin
+2. 2. Role Mahasiswa
 ```html
 <!DOCTYPE html>
 <html lang="en">
