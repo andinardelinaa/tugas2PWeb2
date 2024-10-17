@@ -142,7 +142,7 @@ class Database {
 
 ## 4). Membuat kelas turunan menggunakan konsep pewarisan 
 membuat class turunan dari nilai yaitu lulus dan remedi berdasarkan nilai akhir. berikut kode lengkap turunan Lulus:
-```
+```php
 <?php
 class Lulus extends Nilai{
     public function __construct(){
