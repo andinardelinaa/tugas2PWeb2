@@ -1,5 +1,6 @@
 # TUGAS 2 PRAKTIKUM WEB 2
 # ERD TABEL MAHASISWA DAN NILAI
+Studi kasus mengenai mahasiswa dan dosen menunjukkan bagaimana implementasi Sistem Penilaian Mahasiswa. Sistem ini di polymorishm dengan role sebagai admin dan role sebagai mahasiswa.
 ## 1). Membuat View berbasis OOP, dengan mengambil data dari database MySQL
 
 - membuat database db_mahasiswa dan membuat tabel mahasiswa dengan struktur :
