@@ -175,7 +175,7 @@ $data = $remidi ->tampilkanData();
 
 2 peran yaitu menjadi admin dan mahasiswa, admin bisa mengakses semua tabel, sedangkan mahasiswa hanya bisa melihat tabel remedi dan lulus. isi dalam index:
 1. Role Admin
-2. 2. Role Mahasiswa
+2. Role Mahasiswa
 ```html
 <!DOCTYPE html>
 <html lang="en">
