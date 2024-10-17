@@ -40,15 +40,11 @@ dan tabel nilai dengan struktur :
         <h2>Halo!</h2>
         <p>Apa yang Harus Anda Lakukan?<br>
         Jika Anda seorang admin, silakan klik Menu Admin, dan jika Anda seorang mahasiswa, silakan klik Mahasiswa.</p>
-        
     </div>
-
-
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 </body>
 </html>
 ?>
@@ -93,7 +89,18 @@ class Database {
 ```
 
 ## 2). Gunakan the_construct sebagai link ke database 
-cnstrator pada class mahasiswa untuk menghubungkan dengan class database
+constractor pada class Database untuk menginisialisasi properti
+```php
+<?php
+class database {
+    public function __construct() {
+        $this->getConnection();
+    }
+}
+?>
+```
+
+constractor pada class Mahasiswa untuk menginisialisasi dan koneksi ke database
 ```php
 <?php
 class Mahasiswa extends Database{
@@ -106,7 +113,7 @@ public function __construct() {
 }
 ?>
 ```
-construct pada class nilai extends mahasiswa
+constractor pada class Mahasiswa untuk menginisialisasi dan koneksi ke database
 ```php
 <?php
 class Nilai extends Mahasiswa
@@ -206,18 +213,20 @@ $data = $remidi ->tampilkanData();
         <h2>Halo!</h2>
         <p>Apa yang Harus Anda Lakukan?<br>
         Jika Anda seorang admin, silakan klik Menu Admin, dan jika Anda seorang mahasiswa, silakan klik Mahasiswa.</p>
-        
     </div>
-
-
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 </body>
 </html>
 ```
 tampilan:
 ![beranda](https://github.com/user-attachments/assets/1361e7e6-3599-4a89-99d7-cd3ec92b95a4)
 
+## Tampilan Role Admin (melihat data mahasiswa, nilai, lulus dan remedi)
+
+![role admin](https://github.com/user-attachments/assets/54d1128d-a3eb-464c-a7c1-dce4f06389ed)
+
+## Tampilan Role Mahasiswa (melihat nilai lulus dan remidi)
+![role mahasiswa](https://github.com/user-attachments/assets/5d9e0321-30c4-4ba2-b9fe-12e4e953ba9b)
